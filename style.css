@@ -23,25 +23,6 @@ body {
     }
 }
 
-h1 {
-    font-size: 3em;
-    margin-top: 40px;
-    animation: latido 1.5s infinite;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
-}
-
-@keyframes latido {
-
-    0%,
-    100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
-}
-
 section {
     margin: 60px 20px;
     padding: 25px;
@@ -51,11 +32,89 @@ section {
     box-shadow: 0 0 25px rgba(255, 182, 255, 0.4);
 }
 
-.fechas p {
-    font-size: 1.2em;
-    margin: 10px 0;
+/* TIMELINE */
+.timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
+.momento {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+}
+
+.icono {
+    font-size: 2em;
+}
+
+/* SOBRE */
+.sobre {
+    width: 120px;
+    height: 80px;
+    margin: 20px auto;
+    position: relative;
+    cursor: pointer;
+}
+
+.tapa {
+    width: 0;
+    height: 0;
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 40px solid #fff;
+    position: absolute;
+    top: 0;
+    transition: transform 1s;
+    transform-origin: top;
+}
+
+.cuerpo {
+    width: 120px;
+    height: 80px;
+    background: #fff;
+    position: absolute;
+    top: 40px;
+    border-radius: 0 0 10px 10px;
+}
+
+.carta {
+    display: none;
+    margin-top: 20px;
+    color: #5a005a;
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+/* CHAT */
+.chats {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.chat-burbuja {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+.izquierda {
+    background: #ffffffcc;
+    align-self: flex-start;
+    color: #5a005a;
+}
+
+.derecha {
+    background: #ffdaf6;
+    align-self: flex-end;
+    color: #5a005a;
+}
+
+/* GALERÍA Y MODAL igual que antes */
 .fotos {
     display: flex;
     justify-content: center;
@@ -67,58 +126,8 @@ section {
     width: 200px;
     border-radius: 15px;
     cursor: pointer;
-    transition: transform 0.4s, box-shadow 0.4s;
 }
 
-.fotos img:hover {
-    transform: scale(1.12);
-    box-shadow: 0 0 20px #ffb3ff;
-}
-
-button {
-    padding: 15px 30px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(45deg, #ff6ec7, #b57edc);
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    transform: scale(1.12);
-}
-
-.musica-btn {
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 1000;
-}
-
-/* Estrellas */
-.estrellas {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png');
-    animation: moverEstrellas 60s linear infinite;
-    opacity: 0.4;
-    z-index: -1;
-}
-
-@keyframes moverEstrellas {
-    from {
-        background-position: 0 0;
-    }
-
-    to {
-        background-position: 1000px 1000px;
-    }
-}
-
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -138,14 +147,23 @@ button:hover {
     border-radius: 20px;
 }
 
-/* Corazones */
-@keyframes caer {
-    to {
-        transform: translateY(110vh);
-        opacity: 0;
-    }
+/* ESTRELLAS */
+.estrellas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent url('https://www.transparenttextures.com/patterns/stardust.png');
+    animation: moverEstrellas 60s linear infinite;
+    opacity: 0.4;
+    z-index: -1;
 }
 
-#diasJuntos {
-    font-size: 1.8em;
+@keyframes moverEstrellas {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 1000px 1000px;
+    }
 }

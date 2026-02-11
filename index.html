@@ -10,13 +10,11 @@
 
 <body>
 
-    <!-- Música -->
     <audio id="musica" loop>
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
     <button class="musica-btn" onclick="reproducirMusica()">🎵 Nuestra canción</button>
 
-    <!-- Fondo estrellas -->
     <div class="estrellas"></div>
 
     <section class="hero">
@@ -24,26 +22,47 @@
         <p>Eres la parte más bonita de mi vida</p>
     </section>
 
-    <!-- Fechas importantes -->
+    <!-- FECHAS BONITAS -->
     <section class="fechas">
-        <h2>Nuestras fechas especiales 💞</h2>
-        <p>💬 Empezamos a hablar: <strong>15 de abril de 2024</strong></p>
-        <p>💍 Me dijiste que sí: <strong>25 de junio de 2024</strong></p>
+        <h2>Nuestra Historia 💞</h2>
+        <div class="timeline">
+            <div class="momento">
+                <span class="icono">💬</span>
+                <div>
+                    <h3>15 Abril 2024</h3>
+                    <p>El día que empezamos a hablar y sin saberlo, comenzó algo hermoso</p>
+                </div>
+            </div>
+            <div class="momento">
+                <span class="icono">💍</span>
+                <div>
+                    <h3>25 Junio 2024</h3>
+                    <p>El día que me dijiste que sí y comenzamos nuestra historia juntos</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Contador -->
+    <!-- CONTADOR -->
     <section class="contador">
-        <h2>Llevamos compartiendo momentos 💖</h2>
+        <h2>Nuestro tiempo juntos 💖</h2>
         <p id="diasJuntos"></p>
     </section>
 
-    <!-- Carta -->
-    <section class="carta" id="cartaSeccion">
-        <h2>Una carta para ti 💌</h2>
-        <p id="mensaje"></p>
+    <!-- CARTA SOBRE -->
+    <section class="carta-seccion">
+        <h2>Tengo algo para ti 💌</h2>
+        <div class="sobre" onclick="abrirCarta()">
+            <div class="tapa"></div>
+            <div class="cuerpo"></div>
+        </div>
+
+        <div class="carta" id="carta">
+            <p id="mensaje"></p>
+        </div>
     </section>
 
-    <!-- Galería -->
+    <!-- GALERÍA -->
     <section class="galeria">
         <h2>Nuestros recuerdos 📸</h2>
         <div class="fotos">
@@ -53,14 +72,22 @@
         </div>
     </section>
 
+    <!-- RECUERDOS DE CHAT -->
+    <section class="chats">
+        <div class="fotos">
+            <img src="./fotos/chat1.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat2.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat3.jpg" onclick="abrirModal(this.src)">
+        </div>
+    </section>
 
-    <!-- Sorpresa -->
+    <!-- SORPRESA -->
     <section class="sorpresa">
         <button onclick="mostrarSorpresa()">Haz clic aquí 💖</button>
         <p id="sorpresaTexto"></p>
     </section>
 
-    <!-- Modal -->
+    <!-- MODAL -->
     <div id="modal" class="modal" onclick="cerrarModal()">
         <img id="modalImg">
     </div>

@@ -5,18 +5,26 @@ function reproducirMusica() {
 function mostrarSorpresa() {
     const texto = document.getElementById("sorpresaTexto");
     texto.innerHTML = "Eres mi lugar favorito en el mundo 💗💜";
-    texto.style.fontSize = "1.5em";
-    texto.style.marginTop = "20px";
 }
 
-// Contador días
+// Contador
 const inicio = new Date("2024-04-15");
 const hoy = new Date();
 const dias = Math.floor((hoy - inicio) / (1000 * 60 * 60 * 24));
 document.getElementById("diasJuntos").innerHTML = dias + " días juntos 💖";
 
+// Abrir carta animada
+function abrirCarta() {
+    document.querySelector(".tapa").style.transform = "rotateX(180deg)";
+    const carta = document.getElementById("carta");
+    carta.style.display = "block";
+    escribirCarta();
+}
+
 // Carta escribiéndose
 const textoCarta = `Desde que empezamos a hablar aquel 15 de abril de 2024, mi mundo cambió por completo.
+Y desde ese 25 de junio de 2024 en que aceptaste ser mi novia, supe que eras la persona con la que quería compartir todo.
+
 Cada día contigo es más bonito que el anterior, cada risa tuya ilumina mis días
 y cada momento juntos se queda guardado en mi corazón.
 
@@ -31,29 +39,12 @@ function escribirCarta() {
         setTimeout(escribirCarta, 35);
     }
 }
-escribirCarta();
-
-// Lluvia de corazones
-setInterval(() => {
-    const corazon = document.createElement("div");
-    corazon.innerHTML = ["💖", "💜", "💕", "💗"][Math.floor(Math.random() * 4)];
-    corazon.style.position = "fixed";
-    corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.top = "-10px";
-    corazon.style.fontSize = Math.random() * 20 + 15 + "px";
-    corazon.style.animation = "caer 6s linear forwards";
-    document.body.appendChild(corazon);
-    setTimeout(() => corazon.remove(), 6000);
-}, 300);
 
 // Modal fotos
 function abrirModal(src) {
-    const modal = document.getElementById("modal");
-    const modalImg = document.getElementById("modalImg");
-    modal.style.display = "flex";
-    modalImg.src = src;
+    document.getElementById("modal").style.display = "flex";
+    document.getElementById("modalImg").src = src;
 }
-
 function cerrarModal() {
     document.getElementById("modal").style.display = "none";
 }
