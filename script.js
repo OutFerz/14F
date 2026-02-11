@@ -1,3 +1,7 @@
+function reproducirMusica() {
+    document.getElementById("musica").play();
+}
+
 function mostrarSorpresa() {
     const texto = document.getElementById("sorpresaTexto");
     texto.innerHTML = "Eres mi lugar favorito en el mundo 💗💜";
@@ -5,23 +9,51 @@ function mostrarSorpresa() {
     texto.style.marginTop = "20px";
 }
 
-// Contador desde el 15 de abril de 2024
+// Contador días
 const inicio = new Date("2024-04-15");
 const hoy = new Date();
-const diferencia = hoy - inicio;
-const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+const dias = Math.floor((hoy - inicio) / (1000 * 60 * 60 * 24));
 document.getElementById("diasJuntos").innerHTML = dias + " días juntos 💖";
 
-// Corazones flotando
+// Carta escribiéndose
+const textoCarta = `Desde que empezamos a hablar aquel 15 de abril de 2024, mi mundo cambió por completo.
+Cada día contigo es más bonito que el anterior, cada risa tuya ilumina mis días
+y cada momento juntos se queda guardado en mi corazón.
+
+Gracias por ser mi paz, mi alegría y mi persona favorita.
+Te amo muchísimo, hoy y siempre 💗💜`;
+
+let i = 0;
+function escribirCarta() {
+    if (i < textoCarta.length) {
+        document.getElementById("mensaje").innerHTML += textoCarta.charAt(i);
+        i++;
+        setTimeout(escribirCarta, 35);
+    }
+}
+escribirCarta();
+
+// Lluvia de corazones
 setInterval(() => {
     const corazon = document.createElement("div");
-    corazon.innerHTML = "💜";
+    corazon.innerHTML = ["💖", "💜", "💕", "💗"][Math.floor(Math.random() * 4)];
     corazon.style.position = "fixed";
     corazon.style.left = Math.random() * 100 + "vw";
-    corazon.style.top = "100vh";
-    corazon.style.fontSize = Math.random() * 20 + 20 + "px";
-    corazon.style.animation = "flotar 6s linear forwards";
+    corazon.style.top = "-10px";
+    corazon.style.fontSize = Math.random() * 20 + 15 + "px";
+    corazon.style.animation = "caer 6s linear forwards";
     document.body.appendChild(corazon);
-
     setTimeout(() => corazon.remove(), 6000);
-}, 400);
+}, 300);
+
+// Modal fotos
+function abrirModal(src) {
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    modal.style.display = "flex";
+    modalImg.src = src;
+}
+
+function cerrarModal() {
+    document.getElementById("modal").style.display = "none";
+}

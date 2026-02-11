@@ -10,49 +10,52 @@
 
 <body>
 
-    <audio autoplay loop>
+    <!-- Música -->
+    <audio id="musica" loop>
         <source src="musica.mp3" type="audio/mpeg">
     </audio>
+    <button class="musica-btn" onclick="reproducirMusica()">🎵 Nuestra canción</button>
 
-    <div class="corazones"></div>
+    <!-- Fondo estrellas -->
+    <div class="estrellas"></div>
 
     <section class="hero">
         <h1>Feliz San Valentín Mi Amor ❤️</h1>
-        <p>Eres la mejor parte de mi vida</p>
+        <p>Eres la parte más bonita de mi vida</p>
     </section>
 
+    <!-- Contador -->
     <section class="contador">
         <h2>Llevamos compartiendo momentos 💞</h2>
-        <p id="diasJuntos" style="font-size:1.8em;"></p>
+        <p id="diasJuntos"></p>
     </section>
 
-
+    <!-- Carta -->
     <section class="carta">
         <h2>Una carta para ti 💌</h2>
-        <p id="mensaje">
-            Desde que empezamos a hablar aquel 15 de abril de 2024, mi mundo cambió por completo.
-            Cada día contigo es más bonito que el anterior, cada risa tuya ilumina mis días
-            y cada momento juntos se queda guardado en mi corazón.
-
-            Gracias por ser mi paz, mi alegría y mi persona favorita.
-            Te amo muchísimo, hoy y siempre 💗💜
-
-        </p>
+        <p id="mensaje"></p>
     </section>
 
+    <!-- Galería -->
     <section class="galeria">
         <h2>Nuestros recuerdos 📸</h2>
         <div class="fotos">
-            <img src="fotos/foto1.jpg">
-            <img src="fotos/foto2.jpg">
-            <img src="fotos/foto3.jpg">
+            <img src="fotos/foto1.jpg" onclick="abrirModal(this.src)">
+            <img src="fotos/foto2.jpg" onclick="abrirModal(this.src)">
+            <img src="fotos/foto3.jpg" onclick="abrirModal(this.src)">
         </div>
     </section>
 
+    <!-- Sorpresa -->
     <section class="sorpresa">
         <button onclick="mostrarSorpresa()">Haz clic aquí 💖</button>
         <p id="sorpresaTexto"></p>
     </section>
+
+    <!-- Modal para fotos -->
+    <div id="modal" class="modal" onclick="cerrarModal()">
+        <img id="modalImg">
+    </div>
 
     <script src="script.js"></script>
 </body>
