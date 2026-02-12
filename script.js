@@ -2,49 +2,146 @@ function reproducirMusica() {
     document.getElementById("musica").play();
 }
 
-function mostrarSorpresa() {
-    const texto = document.getElementById("sorpresaTexto");
-    texto.innerHTML = "Eres mi lugar favorito en el mundo 💗💜";
+// ================= CONTADORES EN TIEMPO REAL =================
+
+function actualizarContador(idElemento, fechaInicio, texto) {
+    const inicio = new Date(fechaInicio).getTime();
+
+    function actualizar() {
+        const ahora = new Date().getTime();
+        const diferencia = ahora - inicio;
+
+        const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+        const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+        const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+        const segundos = Math.floor((diferencia / 1000) % 60);
+
+        document.getElementById(idElemento).innerHTML =
+            `${texto}<br>
+            <strong>${dias}</strong> días 
+            ${horas}h ${minutos}m ${segundos}s 💖`;
+    }
+
+    actualizar();
+    setInterval(actualizar, 1000);
 }
 
-// Contador
-const inicio = new Date("2024-04-15");
-const hoy = new Date();
-const dias = Math.floor((hoy - inicio) / (1000 * 60 * 60 * 24));
-document.getElementById("diasJuntos").innerHTML = dias + " días juntos 💖";
+actualizarContador(
+    "contadorHablando",
+    "2024-04-15T00:00:00",
+    "Tiempo desde que empezamos a hablar:"
+);
 
-// Abrir carta animada
-function abrirCarta() {
-    document.querySelector(".tapa").style.transform = "rotateX(180deg)";
-    const carta = document.getElementById("carta");
-    carta.style.display = "block";
-    escribirCarta();
-}
+actualizarContador(
+    "contadorNovios",
+    "2024-06-25T00:00:00",
+    "Tiempo siendo novios:"
+);
 
-// Carta escribiéndose
-const textoCarta = `Desde que empezamos a hablar aquel 15 de abril de 2024, mi mundo cambió por completo.
-Y desde ese 25 de junio de 2024 en que aceptaste ser mi novia, supe que eras la persona con la que quería compartir todo.
 
-Cada día contigo es más bonito que el anterior, cada risa tuya ilumina mis días
-y cada momento juntos se queda guardado en mi corazón.
+// ================= CARTA =================
 
-Gracias por ser mi paz, mi alegría y mi persona favorita.
-Te amo muchísimo, hoy y siempre 💗💜`;
+const textoCarta = `Desde aquel 15 de abril de 2024 cuando empezamos a hablar,
+mi vida empezó a cambiar poco a poco.
+
+Y el 25 de junio de 2024,
+cuando aceptaste ser mi polola,
+se convirtió en uno de los días más felices de mi vida.
+
+Gracias por cada mensaje,
+cada risa,
+cada momento.
+
+Te amo con todo mi corazón 💗💜`;
 
 let i = 0;
+let cartaAbierta = false;
+
+function abrirCarta() {
+    if (cartaAbierta) return;
+
+    document.querySelector(".tapa").style.transform = "rotateX(180deg)";
+    document.getElementById("carta").style.display = "block";
+
+    crearCorazones(25);
+    escribirCarta();
+    cartaAbierta = true;
+}
+
 function escribirCarta() {
     if (i < textoCarta.length) {
         document.getElementById("mensaje").innerHTML += textoCarta.charAt(i);
         i++;
-        setTimeout(escribirCarta, 35);
+        setTimeout(escribirCarta, 30);
     }
 }
 
-// Modal fotos
+// ================= MODAL =================
+
 function abrirModal(src) {
     document.getElementById("modal").style.display = "flex";
     document.getElementById("modalImg").src = src;
+    crearCorazones(15);
 }
+
 function cerrarModal() {
     document.getElementById("modal").style.display = "none";
 }
+
+// ================= EXTRA CHATS =================
+
+function toggleExtraChats() {
+    document.getElementById("extraChats").classList.toggle("mostrar");
+    crearCorazones(20);
+}
+
+// ================= CORAZONES =================
+
+function crearCorazones(cantidad) {
+    const container = document.getElementById("corazones-container");
+
+    for (let i = 0; i < cantidad; i++) {
+        const corazon = document.createElement("div");
+        corazon.classList.add("corazon");
+        corazon.innerHTML = "💗";
+
+        corazon.style.left = Math.random() * 100 + "vw";
+        corazon.style.fontSize = Math.random() * 20 + 15 + "px";
+        corazon.style.animationDuration = Math.random() * 3 + 2 + "s";
+
+        container.appendChild(corazon);
+
+        setTimeout(() => {
+            corazon.remove();
+        }, 4000);
+    }
+}
+
+// ================= SCROLL REVEAL =================
+
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll", () => {
+    const trigger = window.innerHeight * 0.85;
+
+    reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < trigger) {
+            el.classList.add("active");
+        }
+    });
+});
+
+// ================= REPRODUCCIÓN AUTOMÁTICA =================
+
+document.addEventListener("DOMContentLoaded", function () {
+    const musica = document.getElementById("musica");
+
+    // Intento automático
+    musica.play().catch(() => {
+        // Si el navegador lo bloquea, se activará en el primer clic
+        document.addEventListener("click", () => {
+            musica.play();
+        }, { once: true });
+    });
+});

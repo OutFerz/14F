@@ -6,7 +6,6 @@ body {
     animation: fondoAnimado 12s ease infinite;
     color: white;
     text-align: center;
-    overflow-x: hidden;
 }
 
 @keyframes fondoAnimado {
@@ -34,20 +33,41 @@ section {
 
 /* TIMELINE */
 .timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    position: relative;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: white;
+    transform: translateX(-50%);
 }
 
 .momento {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-align: left;
+    position: relative;
+    margin-bottom: 40px;
 }
 
-.icono {
-    font-size: 2em;
+.punto {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.contenido {
+    background: white;
+    color: #5a005a;
+    padding: 15px;
+    border-radius: 15px;
+    width: 260px;
+    margin: 30px auto 0 auto;
 }
 
 /* SOBRE */
@@ -87,34 +107,12 @@ section {
     background: #fff;
     padding: 20px;
     border-radius: 15px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* CHAT */
-.chats {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.chat-burbuja {
-    max-width: 70%;
-    padding: 10px 15px;
-    border-radius: 20px;
-}
-
-.izquierda {
-    background: #ffffffcc;
-    align-self: flex-start;
-    color: #5a005a;
-}
-
-.derecha {
-    background: #ffdaf6;
-    align-self: flex-end;
-    color: #5a005a;
-}
-
-/* GALERÍA Y MODAL igual que antes */
+/* GALERIA */
 .fotos {
     display: flex;
     justify-content: center;
@@ -126,8 +124,44 @@ section {
     width: 200px;
     border-radius: 15px;
     cursor: pointer;
+    transition: transform 0.3s;
 }
 
+.fotos img:hover {
+    transform: scale(1.05);
+}
+
+/* EXTRA CHATS */
+.btn-extra {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background: white;
+    color: #b4008f;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.extra-chats {
+    display: none;
+    margin-top: 20px;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.extra-chats.mostrar {
+    display: flex;
+}
+
+.extra-chats img {
+    width: 200px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* MODAL */
 .modal {
     display: none;
     position: fixed;
@@ -166,4 +200,97 @@ section {
     to {
         background-position: 1000px 1000px;
     }
+}
+
+/* ================= SCROLL REVEAL ================= */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================= GLOW PROFUNDO ================= */
+
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 105, 180, 0.25), transparent 70%);
+    top: -50%;
+    left: -50%;
+    animation: glowMove 10s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes glowMove {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ================= PARTICULAS ================= */
+
+.particulas {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/dust.png');
+    opacity: 0.15;
+    z-index: -2;
+}
+
+/* ================= CORAZONES ================= */
+
+#corazones-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 9999;
+}
+
+.corazon {
+    position: absolute;
+    bottom: -20px;
+    animation: flotar linear forwards;
+}
+
+@keyframes flotar {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateY(-100vh);
+        opacity: 0;
+    }
+}
+
+.contador-tiempo {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #7a007a;
+}
+
+.contador-tiempo strong {
+    font-size: 18px;
+    color: #b4008f;
 }

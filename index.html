@@ -9,49 +9,48 @@
 </head>
 
 <body>
-
-    <audio id="musica" loop>
-        <source src="musica.mp3" type="audio/mpeg">
-    </audio>
-    <button class="musica-btn" onclick="reproducirMusica()">🎵 Nuestra canción</button>
+    <audio id="musica" src="musica.mp3" loop></audio>
 
     <div class="estrellas"></div>
+    <div class="particulas"></div>
+    <div id="corazones-container"></div>
 
-    <section class="hero">
+    <section class="hero reveal">
         <h1>Feliz San Valentín Mi Amor ❤️</h1>
         <p>Eres la parte más bonita de mi vida</p>
     </section>
 
-    <!-- FECHAS BONITAS -->
-    <section class="fechas">
-        <h2>Nuestra Historia 💞</h2>
-        <div class="timeline">
-            <div class="momento">
-                <span class="icono">💬</span>
-                <div>
-                    <h3>15 Abril 2024</h3>
-                    <p>El día que empezamos a hablar y sin saberlo, comenzó algo hermoso</p>
-                </div>
-            </div>
-            <div class="momento">
-                <span class="icono">💍</span>
-                <div>
-                    <h3>25 Junio 2024</h3>
-                    <p>El día que me dijiste que sí y comenzamos nuestra historia juntos</p>
-                </div>
+    <!-- FECHAS -->
+    <div class="timeline">
+
+        <div class="momento">
+            <div class="punto"></div>
+            <div class="contenido">
+                <h3>💬 15 Abril 2024</h3>
+                <p>El día que empezamos a hablar y comenzó algo hermoso.</p>
+                <p class="contador-tiempo" id="contadorHablando"></p>
             </div>
         </div>
+
+        <div class="momento">
+            <div class="punto"></div>
+            <div class="contenido">
+                <h3>💍 25 Junio 2024</h3>
+                <p>El día que me dijiste que sí y comenzamos nuestra historia juntos.</p>
+                <p class="contador-tiempo" id="contadorNovios"></p>
+            </div>
+        </div>
+
+    </div>
+
     </section>
 
-    <!-- CONTADOR -->
-    <section class="contador">
-        <h2>Nuestro tiempo juntos 💖</h2>
-        <p id="diasJuntos"></p>
-    </section>
 
-    <!-- CARTA SOBRE -->
-    <section class="carta-seccion">
+
+    <!-- CARTA -->
+    <section class="carta-seccion reveal">
         <h2>Tengo algo para ti 💌</h2>
+
         <div class="sobre" onclick="abrirCarta()">
             <div class="tapa"></div>
             <div class="cuerpo"></div>
@@ -63,7 +62,7 @@
     </section>
 
     <!-- GALERÍA -->
-    <section class="galeria">
+    <section class="galeria reveal">
         <h2>Nuestros recuerdos 📸</h2>
         <div class="fotos">
             <img src="./fotos/foto1.jpg" onclick="abrirModal(this.src)">
@@ -72,19 +71,32 @@
         </div>
     </section>
 
-    <!-- RECUERDOS DE CHAT -->
-    <section class="chats">
+    <!-- CHATS -->
+    <section class="chats reveal">
+        <h2>Recuerdos de nuestras conversaciones 💕</h2>
+
         <div class="fotos">
             <img src="./fotos/chat1.jpg" onclick="abrirModal(this.src)">
             <img src="./fotos/chat2.jpg" onclick="abrirModal(this.src)">
             <img src="./fotos/chat3.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat4.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat5.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat6.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat7.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat8.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat9.jpg" onclick="abrirModal(this.src)">
         </div>
-    </section>
 
-    <!-- SORPRESA -->
-    <section class="sorpresa">
-        <button onclick="mostrarSorpresa()">Haz clic aquí 💖</button>
-        <p id="sorpresaTexto"></p>
+        <button class="btn-extra" onclick="toggleExtraChats()">
+            Ver capturas del día antes y después 💗
+        </button>
+
+        <div id="extraChats" class="extra-chats">
+            <img src="./fotos/chat10.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat11.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat12.jpg" onclick="abrirModal(this.src)">
+            <img src="./fotos/chat13.jpg" onclick="abrirModal(this.src)">
+        </div>
     </section>
 
     <!-- MODAL -->
