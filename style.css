@@ -23,54 +23,68 @@ body {
 }
 
 section {
-    margin: 60px 20px;
+    margin: 60px auto;
     padding: 25px;
     background: rgba(255, 255, 255, 0.15);
     border-radius: 25px;
     backdrop-filter: blur(12px);
     box-shadow: 0 0 25px rgba(255, 182, 255, 0.4);
+    position: relative;
+    overflow: hidden;
+    max-width: 1000px;
 }
 
-/* TIMELINE */
+/* ================= TIMELINE ================= */
+
 .timeline {
     position: relative;
+    max-width: 800px;
+    margin: 80px auto;
+    padding: 40px 0;
 }
 
 .timeline::before {
     content: "";
     position: absolute;
+    top: 0;
     left: 50%;
+    transform: translateX(-50%);
     width: 4px;
     height: 100%;
-    background: white;
-    transform: translateX(-50%);
+    background: linear-gradient(to bottom, #ffffff, #ffb3ec);
+    border-radius: 4px;
 }
 
 .momento {
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 }
 
 .punto {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     background: white;
     border-radius: 50%;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    top: 0;
+    z-index: 2;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
 }
 
 .contenido {
     background: white;
     color: #5a005a;
-    padding: 15px;
+    padding: 20px;
     border-radius: 15px;
-    width: 260px;
-    margin: 30px auto 0 auto;
+    width: 300px;
+    margin: 40px auto 0 auto;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* SOBRE */
+/* ================= SOBRE ================= */
+
 .sobre {
     width: 120px;
     height: 80px;
@@ -112,7 +126,8 @@ section {
     margin-right: auto;
 }
 
-/* GALERIA */
+/* ================= GALERIA ================= */
+
 .fotos {
     display: flex;
     justify-content: center;
@@ -131,7 +146,41 @@ section {
     transform: scale(1.05);
 }
 
-/* EXTRA CHATS */
+.grid-recuerdos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.recuerdo {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.recuerdo:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255, 105, 180, 0.4);
+}
+
+.recuerdo img {
+    width: 100%;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.recuerdo p {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* ================= EXTRA CHATS ================= */
+
 .btn-extra {
     margin-top: 20px;
     padding: 10px 20px;
@@ -141,6 +190,11 @@ section {
     color: #b4008f;
     cursor: pointer;
     font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-extra:hover {
+    transform: scale(1.05);
 }
 
 .extra-chats {
@@ -161,7 +215,8 @@ section {
     cursor: pointer;
 }
 
-/* MODAL */
+/* ================= MODAL ================= */
+
 .modal {
     display: none;
     position: fixed;
@@ -170,7 +225,7 @@ section {
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
 }
@@ -181,7 +236,8 @@ section {
     border-radius: 20px;
 }
 
-/* ESTRELLAS */
+/* ================= ESTRELLAS ================= */
+
 .estrellas {
     position: fixed;
     width: 100%;
@@ -202,25 +258,7 @@ section {
     }
 }
 
-/* ================= SCROLL REVEAL ================= */
-
-.reveal {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s ease;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* ================= GLOW PROFUNDO ================= */
-
-section {
-    position: relative;
-    overflow: hidden;
-}
+/* ================= GLOW ================= */
 
 section::before {
     content: "";
@@ -283,6 +321,8 @@ section::before {
         opacity: 0;
     }
 }
+
+/* ================= CONTADOR ================= */
 
 .contador-tiempo {
     margin-top: 10px;
