@@ -41,18 +41,28 @@ actualizarContador(
 
 // ================= CARTA =================
 
-const textoCarta = `Desde aquel 15 de abril de 2024 cuando empezamos a hablar,
-mi vida empezó a cambiar poco a poco.
+const textoCarta = `Desde aquel 15 de abril de 2024, cuando empezamos a hablar,
+algo en mí supo que no eras una persona más.
+
+Sin darme cuenta, empezaste a convertirte en mi parte favorita del día,
+en el mensaje que esperaba con ilusión,
+en la sonrisa que aparecía sin esfuerzo.
 
 Y el 25 de junio de 2024,
 cuando aceptaste ser mi polola,
-se convirtió en uno de los días más felices de mi vida.
+mi corazón entendió que estaba exactamente donde quería estar.
 
-Gracias por cada mensaje,
-cada risa,
-cada momento.
+Desde entonces, cada risa tuya,
+cada conversación,
+cada abrazo,
+ha construido el lugar más bonito que existe para mí: nosotros.
 
-Te amo con todo mi corazón 💗💜`;
+Gracias por elegirme,
+por quedarte,
+por ser mi paz y mi alegría.
+
+Te amo con todo mi corazón,
+hoy, mañana y siempre 💗💜`;
 
 let i = 0;
 let cartaAbierta = false;
